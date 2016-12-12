@@ -2,17 +2,18 @@
 
 var app = angular.module('myApp', []);
 
-app.controller('testController', function($scope) {
+app.controller('testController', function($scope, $http) {
     $scope.value = "";
     $scope.formData = {rsvpName : ""};
 
     $scope.buttonClick = function() {
-        // $http({
-        //     url:"http://localhost:8080/families/{$scope.formData.rsvpName}",
-        //     method:"GET"
-        // }).then(function(response) {
-        //     $scope.value = response.data.familyName;
-        // });
-        $scope.value = $scope.formData.rsvpName;
+        var query = $scope.formData.rsvpName;
+        $http({
+            url:"http://localhost:8080/families/"+query,
+            method:"GET",
+        }).then(function(response) {
+            console.log(response.data);
+            $scope.value = response.data.familyName;
+        });
     }
 });
