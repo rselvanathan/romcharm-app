@@ -1,23 +1,18 @@
 <!doctype html>
 <html>
   <head>
-    <title>Romesh & Charmi</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-    <script src="./src/testController.js"></script>
+    <title>Romesh & Charmikha</title>
   </head>
   <body ng-app="myApp">
       <h1>Romesh & Charmikha</h1>
-      <div ng-controller="testController">
-        <div>
-          Please enter the name on the RSVP invite :
-        </div>
-        <div>
-            <input type="text" ng-model="formData.rsvpName"/>
-            <button type="submit" ng-click="buttonClick()">Search</button>
-        </div>
-        <div>
-          {{value}}
-        </div>
+      <div id="main">
+            <div ng-view/>
       </div>
   </body>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+  <!-- Define scripts with dependencies first -->
+  <script src="./src/js/homeController.js"></script>  
+  <script src="./src/js/viewController.js"></script>
 </html>
