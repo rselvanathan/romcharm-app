@@ -11,9 +11,13 @@ app.controller('testController', function($scope, $http) {
         $http({
             url:"http://localhost:8080/families/"+query,
             method:"GET",
-        }).then(function(response) {
+        }).then(function successCallback(response) {
             console.log(response.data);
             $scope.value = response.data.familyName;
+        }, function errorCallback(response) {
+            if(response.status == 404) {
+                $scope.value = "Name not found";
+            }
         });
     }
 });
