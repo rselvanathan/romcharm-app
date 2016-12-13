@@ -1,14 +1,13 @@
-var app = angular.module('myApp', ['ngRoute']);
+var app = angular.module('myApp', ['ngRoute', 'ngMaterial']);
 
 app.config(function($routeProvider){
     $routeProvider
         .when('/', {
             templateUrl : 'src/pages/home.html',
-            controller : 'homeController'
+            controller : HomeController
         })
         .when('/register', {
-            templateUrl : 'src/pages/register.html'
+            templateUrl : 'src/pages/register.html',
+            controller : RegisterController
         })
 });
-
-app.controller('homeController', HomeController);

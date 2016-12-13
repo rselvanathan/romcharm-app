@@ -1,5 +1,5 @@
 
-var HomeController = function($scope, $http) {
+var HomeController = function($scope, $http, $location) {
     $scope.value = "";
     $scope.formData = {rsvpName : ""};
 
@@ -10,7 +10,8 @@ var HomeController = function($scope, $http) {
             method:"GET",
         }).then(function successCallback(response) {
             console.log(response.data);
-            $scope.value = response.data.familyName;
+            // $scope.value = response.data.familyName;
+            $location.path('/register');
         }, function errorCallback(response) {
             if(response.status == 404) {
                 $scope.value = "Name not found";
