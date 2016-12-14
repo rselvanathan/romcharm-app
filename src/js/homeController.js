@@ -4,9 +4,9 @@ var HomeController = function($scope, $http, $location) {
     $scope.formData = {rsvpName : ""};
 
     $scope.buttonClick = function() {
-        var query = $scope.formData.rsvpName;
+        var rsvpName = $scope.formData.rsvpName;
         $http({
-            url:"http://localhost:8080/families/"+query,
+            url:"http://localhost:8080/families/"+rsvpName,
             method:"GET",
         }).then(function successCallback(response) {
             console.log(response.data);
@@ -15,7 +15,6 @@ var HomeController = function($scope, $http, $location) {
         }, function errorCallback(response) {
             if(response.status == 404) {
                 $scope.value = "Name not found";
-                $scope.searchForm.rsvpName.$error.noneFound = true;
             }
         });
     }
