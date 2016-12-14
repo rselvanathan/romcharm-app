@@ -31,7 +31,7 @@
           <div layout="row">
             <md-input-container class="md-block">
               <label>Persons attending</label>
-              <input type="number" ng-model="form.attendingNumber" name="attendingNumber" min="1" max="10"/>
+              <input type="number" ng-model="form.attendingNumber" name="attendingNumber" min="1" max="10" ng-disabled="isAttending()" ng-value="setValue()"/>
                 
               <div ng-messages="rsvpForm.attendingNumber.$error" role="alert">
                 <div ng-message="min">
@@ -46,7 +46,7 @@
           </div>
 
           <div>
-             <md-button class="md-raised">Submit</md-button>
+             <md-button ng-disabled="rsvpForm.$invalid" class="md-raised">Submit</md-button>
           </div>
         </form>
       </div> 
