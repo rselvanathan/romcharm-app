@@ -1,15 +1,54 @@
-<div>
-  <form>
-    <div>
-      <h2>Let us know if your coming {{value}}</h2>
-    </div>
-    <div>
-      Are you going to be attending?
+<div layout="column">
+    <md-content layout-padding>
+      <div>
+        <form name="rsvpForm">
+          <div>
+            <span class="md-headline">RSVP</span>
+          </div>
 
-      <md-radio-group ng-model="form.radioButtonGroup">
-        <md-radio-button value="yesButton">Yes</md-radio-button>
-        <md-radio-button value="noButton" >No</md-radio-button>
-      </md-radio-group> 
-    </div>
-  </form>
+          <div layout="row">
+            <md-input-container class="md-block">
+              <label>First Name</label>
+              <input ng-model="form.firstName" required/>
+            </md-input-container>  
+
+            <md-input-container class="md-block">
+              <label>Last Name</label>
+              <input ng-model="form.LastName" required/>
+            </md-input-container>  
+          </div>
+
+          <div layout="row">
+            <md-input-container class="md-block">
+              <label>Attending</label>
+              <md-select ng-model="form.attendance" required>
+                <md-option value="yesOption">Yes</md-option>
+                <md-option value="noOption">No</md-option>
+              </md-select>  
+            </md-input-container>
+          </div>
+
+          <div layout="row">
+            <md-input-container class="md-block">
+              <label>Persons attending</label>
+              <input type="number" ng-model="form.attendingNumber" name="attendingNumber" min="1" max="10"/>
+                
+              <div ng-messages="rsvpForm.attendingNumber.$error" role="alert">
+                <div ng-message="min">
+                  The minimum number has to be 1 (Person registering) if attending
+                </div>
+                
+                <div ng-message="max">
+                  Unfortunatly we only allow up to 9 guests to come with the registered person, which is a maximum of 10.
+                </div>
+              </div>
+            </md-input-container>
+          </div>
+
+          <div>
+             <md-button class="md-raised">Submit</md-button>
+          </div>
+        </form>
+      </div> 
+    </md-content>
 </div>
