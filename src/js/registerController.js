@@ -1,4 +1,5 @@
-var RegisterController = function($scope) {
+var RegisterController = function($scope, globalValues) {
+
     $scope.form = {
         attendance : 'yesOption'
     };
@@ -23,9 +24,18 @@ var RegisterController = function($scope) {
         console.log(body);
     }
 
+    $scope.isSubmitDisabled = function() {
+        var form = $scope.form;
+        if(!form.firstName || !form.lastName || !form.attendance) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
     generateBody = function() {
         var body = {
-            rsvpName : "Selvan",
+            rsvpName : globalValues.rsvpName,
             firstName : $scope.form.firstName,
             lastName : $scope.form.lastName,
             registered : true,
@@ -33,11 +43,11 @@ var RegisterController = function($scope) {
             numberAttending : $scope.form.attendingNumber
         }
         return body;
-    }
+    };
 
     isAttending = function() {
          if($scope.form.attendance === 'yesOption')
             return true;
         else return false;    
-    }
+    };
 };

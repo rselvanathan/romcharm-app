@@ -11,3 +11,9 @@ app.config(function($routeProvider){
             controller : RegisterController
         })
 });
+
+app.service("globalValues", function() {
+    var globalValues = this;
+
+    globalValues.rsvpName = "";
+});

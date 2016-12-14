@@ -2,10 +2,7 @@
     <md-content layout-padding>
       <div>
         <form name="rsvpForm">
-          <div>
-            <span class="md-headline">RSVP</span>
-          </div>
-
+          
           <div layout="row">
             <md-input-container class="md-block">
               <label>First Name</label>
@@ -30,7 +27,7 @@
 
           <div layout="row">
             <md-input-container class="md-block">
-              <label>Persons attending</label>
+              <label>Total number attending</label>
               <input type="number" ng-model="form.attendingNumber" name="attendingNumber" min="1" max="10" ng-disabled="isDisabled()"/>
                 
               <div ng-messages="rsvpForm.attendingNumber.$error" role="alert">
@@ -46,7 +43,7 @@
           </div>
 
           <div>
-             <md-button class="md-raised" ng-click="submitClick()">Submit</md-button>
+             <md-button  ng-disabled="isSubmitDisabled()" class="md-raised" ng-click="submitClick()">Submit</md-button>
           </div>
         </form>
       </div> 

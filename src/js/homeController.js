@@ -1,10 +1,11 @@
 
-var HomeController = function($scope, $http, $location) {
+var HomeController = function($scope, $http, $location, globalValues) {
     $scope.value = "";
-    $scope.formData = {rsvpName : ""};
+
+    $scope.globalValues = globalValues;
 
     $scope.buttonClick = function() {
-        var rsvpName = $scope.formData.rsvpName;
+        var rsvpName = $scope.globalValues.rsvpName;
         $http({
             url:"http://localhost:8080/families/"+rsvpName,
             method:"GET",
