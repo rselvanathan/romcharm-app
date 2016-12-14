@@ -15,6 +15,7 @@ var HomeController = function($scope, $http, $location) {
         }, function errorCallback(response) {
             if(response.status == 404) {
                 $scope.value = "Name not found";
+                $scope.searchForm.rsvpName.$error.noneFound = true;
             }
         });
     }
