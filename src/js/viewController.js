@@ -3,12 +3,15 @@ var app = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages']);
 app.config(function($routeProvider, $mdThemingProvider){
     $routeProvider
         .when('/', {
-            templateUrl : 'src/pages/home.html',
-            controller : HomeController
+            templateUrl : 'src/pages/home.html'
         })
         .when('/register', {
             templateUrl : 'src/pages/register.html',
             controller : RegisterController
+        })
+        .when('/search', {
+            templateUrl : 'src/pages/search.html',
+            controller : SearchController
         });
 
     $mdThemingProvider.theme('blueTheme')

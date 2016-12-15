@@ -1,5 +1,5 @@
 
-var HomeController = function($scope, $http, $location, globalValues) {
+var SearchController = function($scope, $http, $location, globalValues) {
     $scope.value = "";
 
     $scope.globalValues = globalValues;
