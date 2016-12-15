@@ -5,3 +5,19 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
+
+@font-face {
+  font-family: 'weddingFont';
+  src: url('../fonts/karina_aime_les_chocolats.ttf');
+}
+
+@font-face {
+  font-family: 'weddingFont';
+  src: url('../fonts/karina_aime_les_chocolats.ttf');
+  font-weight: bold;
+}
+
+.weddingFont {
+  color: aliceblue;
+  font-family: 'weddingFont';
+}
