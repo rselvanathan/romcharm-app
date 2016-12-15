@@ -1,6 +1,6 @@
 var app = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages']);
 
-app.config(function($routeProvider){
+app.config(function($routeProvider, $mdThemingProvider){
     $routeProvider
         .when('/', {
             templateUrl : 'src/pages/home.html',
@@ -9,7 +9,12 @@ app.config(function($routeProvider){
         .when('/register', {
             templateUrl : 'src/pages/register.html',
             controller : RegisterController
-        })
+        });
+
+    $mdThemingProvider.theme('blueTheme')
+        .primaryPalette('light-blue')
+        .accentPalette('green')
+        .backgroundPalette('light-blue') ; 
 });
 
 app.service("globalValues", function() {
