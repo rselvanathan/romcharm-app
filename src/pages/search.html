@@ -6,7 +6,10 @@
        <input type="text" ng-model="globalValues.rsvpName" style="color:#E1F5FE"/>
      </md-input-container>
   </div>
-  <div layout="columns">  
-   <md-button class="md-raised" ng-click="buttonClick()">Search</md-button>
+  <div layout="column" layout-align="center center">  
+   <md-button class="md-fab md-primary" ng-click="buttonClick()">
+      <md-icon>search</md-icon>
+      <md-tooltip>Search</md-tooltip>
+   </md-button>
   </div>
 </div>

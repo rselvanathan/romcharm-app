@@ -3,7 +3,8 @@ var app = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages']);
 app.config(function($routeProvider, $mdThemingProvider){
     $routeProvider
         .when('/', {
-            templateUrl : 'src/pages/home.html'
+            templateUrl : 'src/pages/home.html',
+            controller : HomeController
         })
         .when('/register', {
             templateUrl : 'src/pages/register.html',
