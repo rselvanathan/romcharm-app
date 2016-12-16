@@ -11,9 +11,20 @@
           <div>
             <md-toolbar style="background-color: #0277BD">
               <div layout="row" layout-align="center start">
-                <md-button ng-click="homeClick()">Home</md-button>
-                <md-button ng-click="rsvpClick()">RSVP</md-button>
-                <md-button >Info</md-button>
+                <md-button class="md-icon-button md-primary" ng-click="homeClick()">
+                  <md-icon>home</md-icon>
+                  <md-tooltip>Home</md-tooltip>
+                </md-button>
+
+                <md-button class="md-icon-button md-primary" ng-click="rsvpClick()">
+                  <md-icon>input</md-icon>
+                  <md-tooltip>RSVP</md-tooltip>
+                </md-button>
+
+                <md-button class="md-icon-button md-primary" >
+                  <md-icon>info</md-icon>
+                  <md-tooltip>Wedding Information</md-tooltip>
+                </md-button>
               </div>
               <div layout="row" layout-align="center start" class="weddingFont">
                 <h1>Romesh & Charmikha</h1>

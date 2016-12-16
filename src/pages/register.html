@@ -43,7 +43,10 @@
             </div>
 
             <div>
-              <md-button  ng-disabled="isSubmitDisabled()" class="md-raised" ng-click="submitClick()">Submit</md-button>
+              <md-button  ng-disabled="isSubmitDisabled()" class="md-fab md-primary md-hue-1" ng-click="submitClick()">
+                <md-icon>send</md-icon>
+                <md-tooltip>Submit</md-tooltip>
+              </md-button>
             </div>
           </form>
         </div> 
