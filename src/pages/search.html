@@ -1,13 +1,12 @@
 
-      <div layout="row" layout-align="center center">
-        <!--<md-content layout-padding layout="row" layout-align="center center">-->
-          <md-input-container class="md-block">
-            <label>Name on RSVP</label>
-            <input type="text" ng-model="globalValues.rsvpName"/>
-          </md-input-container>
-          <md-button class="md-raised" ng-click="buttonClick()">Search</md-button>
-        <!--</md-content>-->
-      </div>
-      <div>
-        {{value}}
-      </div>
+<div layout="row" layout-align="center center">
+  <div layout="column" flex = "15">
+     <md-input-container class="md-block" style="font-size:28px">
+       <label style="color:#BDBDBD">Name on RSVP</label>
+       <input type="text" ng-model="globalValues.rsvpName" style="color:#E1F5FE"/>
+     </md-input-container>
+  </div>
+  <div layout="columns">  
+   <md-button class="md-raised" ng-click="buttonClick()">Search</md-button>
+  </div>
+</div>

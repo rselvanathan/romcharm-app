@@ -15,13 +15,13 @@ var RegisterController = function($scope, $http,globalValues) {
             $scope.form.attendingNumber = 1;
         }
         else {
-            $scope.form.attendingNumber = 0;
+            $scope.form.attendingNumber = '';
         }
     })
 
     $scope.isSubmitDisabled = function() {
         var form = $scope.form;
-        if(!form.firstName || !form.lastName || !form.attendance) {
+        if(!form.firstName || !form.lastName || (form.attendance === 'yesOption' && !form.attendingNumber)) {
             return true;
         } else {
             return false;
@@ -29,13 +29,20 @@ var RegisterController = function($scope, $http,globalValues) {
     };
 
     generateBody = function() {
+        var form = $scope.form;
+        var pNumberAttending;
+        if(!form.attendingNumber) {
+            pNumberAttending = 0;
+        } else {
+            pNumberAttending = form.attendingNumber;
+        }
         var body = {
             rsvpName : globalValues.rsvpName,
-            firstName : $scope.form.firstName,
-            lastName : $scope.form.lastName,
+            firstName : form.firstName,
+            lastName : form.lastName,
             registered : true,
             areAttending : isAttending(),
-            numberAttending : $scope.form.attendingNumber
+            numberAttending : pNumberAttending
         }
         return body;
     };

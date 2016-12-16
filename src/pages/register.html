@@ -30,13 +30,13 @@
                 <label>Total number attending</label>
                 <input type="number" ng-model="form.attendingNumber" name="attendingNumber" min="1" max="10" ng-disabled="isDisabled()"/>
                   
-                <div ng-messages="rsvpForm.attendingNumber.$error" role="alert">
+                <div ng-messages="rsvpForm.attendingNumber.$error">
                   <div ng-message="min">
                     The minimum number has to be 1 (Person registering) if attending
                   </div>
                   
                   <div ng-message="max">
-                    Unfortunatly we only allow up to 9 guests to come with the registered person, which is a maximum of 10.
+                    Unfortunatly we only allow up to 10 guests per RSVP.
                   </div>
                 </div>
               </md-input-container>
