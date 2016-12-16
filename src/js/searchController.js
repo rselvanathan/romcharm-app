@@ -1,6 +1,5 @@
 
-var SearchController = function($scope, $http, $location, globalValues) {
-    $scope.value = "";
+var SearchController = function($scope, $http, $location, $mdDialog,globalValues) {
 
     $scope.globalValues = globalValues;
 
@@ -11,12 +10,24 @@ var SearchController = function($scope, $http, $location, globalValues) {
             method:"GET",
         }).then(function successCallback(response) {
             console.log(response.data);
-            // $scope.value = response.data.familyName;
             $location.path('/register');
         }, function errorCallback(response) {
             if(response.status == 404) {
-                $scope.value = "Name not found";
+                showErrorDialog();
             }
         });
+    }
+
+    var showErrorDialog = function() {
+        $mdDialog.show(
+            $mdDialog
+            .alert()
+            .parent(angular.element(document.querySelector('#mainBody')))
+            .clickOutsideToClose(true)
+            .title('RSVP Name Not Found!')
+            .textContent('Please contact us, if you believe this to be incorrect.')
+            .ariaLabel('Not Found Dialog')
+            .ok('OK')
+        )
     }
 };
