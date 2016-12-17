@@ -18,7 +18,8 @@ app.config(function($routeProvider, $mdThemingProvider){
     $mdThemingProvider.theme('blueTheme')
         .primaryPalette('light-blue')
         .accentPalette('cyan')
-        .backgroundPalette('indigo') ; 
+        .backgroundPalette('indigo')
+        .dark() ; 
 });
 
 app.service("globalValues", function() {

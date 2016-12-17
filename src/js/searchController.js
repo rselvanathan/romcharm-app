@@ -10,23 +10,35 @@ var SearchController = function($scope, $http, $location, $mdDialog,globalValues
             method:"GET",
         }).then(function successCallback(response) {
             console.log(response.data);
-            $location.path('/register');
+            if(response.data.registered) {
+                showAlerDialog(
+                    'You have already registered!', 
+                    'If you would like to make changes, feel free to contact us.',
+                    'Already Registered Dialog'
+                );
+            } else {
+                $location.path('/register');
+            }
         }, function errorCallback(response) {
             if(response.status == 404) {
-                showErrorDialog();
+                showAlerDialog(
+                    'RSVP Name Not Found!', 
+                    'Please contact us, if you believe this to be incorrect.',
+                    'Not Found Dialog'
+                );
             }
         });
     }
 
-    var showErrorDialog = function() {
+    var showAlerDialog = function(title, textContent, arialLabel) {
         $mdDialog.show(
             $mdDialog
             .alert()
             .parent(angular.element(document.querySelector('#mainBody')))
             .clickOutsideToClose(true)
-            .title('RSVP Name Not Found!')
-            .textContent('Please contact us, if you believe this to be incorrect.')
-            .ariaLabel('Not Found Dialog')
+            .title(title)
+            .textContent(textContent)
+            .ariaLabel(arialLabel)
             .ok('OK')
         )
     }

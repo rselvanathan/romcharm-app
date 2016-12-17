@@ -1,6 +1,7 @@
-<div layout="column" layout-align="center center">
-      <md-content layout-padding layout="row" layout-align="center center">
-        <div>
+
+<md-content  layout="column" layout-align="center" flex>
+
+    <div layout="row" layout-align="center center">
           <form name="rsvpForm">
             
             <div layout="row">
@@ -40,15 +41,16 @@
                   </div>
                 </div>
               </md-input-container>
+
             </div>
 
-            <div>
-              <md-button  ng-disabled="isSubmitDisabled()" class="md-grid-item-content" ng-click="submitClick()">
+           <div>
+              <md-button ng-disabled="isSubmitDisabled()" class="md-grid-item-content" ng-click="submitClick()">
                 <md-icon>send</md-icon>
                  <div class="md-grid-text">Submit</div>
               </md-button>
             </div>
+        
           </form>
-        </div> 
-      </md-content>
-</div>
+    </div>       
+</md-content>
