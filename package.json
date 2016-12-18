@@ -10,5 +10,12 @@
   "license": "ISC",
   "dependencies": {
     "angular": "*"
+  },
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-util": "*",
+    "gulp-minify" : "*",
+    "gulp-concat" : "*",
+    "gulp-connect" : "*"
   }
 }

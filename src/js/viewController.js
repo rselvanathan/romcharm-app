@@ -3,15 +3,15 @@ var app = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'ngAni
 app.config(function($routeProvider, $mdThemingProvider){
     $routeProvider
         .when('/', {
-            templateUrl : 'src/pages/home.html',
+            templateUrl : 'pages/home.html',
             controller : HomeController
         })
         .when('/register', {
-            templateUrl : 'src/pages/register.html',
+            templateUrl : 'pages/register.html',
             controller : RegisterController
         })
         .when('/search', {
-            templateUrl : 'src/pages/search.html',
+            templateUrl : 'pages/search.html',
             controller : SearchController
         });
 
@@ -24,6 +24,5 @@ app.config(function($routeProvider, $mdThemingProvider){
 
 app.service("globalValues", function() {
     var globalValues = this;
-
     globalValues.rsvpName = "";
 });
