@@ -1,4 +1,4 @@
-var RegisterController = function($scope, $http,globalValues) {
+var RegisterController = function($scope, $http, $location,globalValues) {
 
     $scope.form = {
         attendance : 'yesOption'
@@ -65,7 +65,11 @@ var RegisterController = function($scope, $http,globalValues) {
                 "Content-Type":"application/json"
             }
         }).then(function successCallback(response) {
-            console.log(response.status)
+            console.log(response.status);
+            if (response.status === 201) {
+                globalValues.family = body;
+                $location.path('/thankyou');
+            }
         }, function errorCallback(response){
             console.log(response.status)
         });

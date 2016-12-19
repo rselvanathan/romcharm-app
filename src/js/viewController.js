@@ -13,6 +13,10 @@ app.config(function($routeProvider, $mdThemingProvider){
         .when('/search', {
             templateUrl : 'pages/search.html',
             controller : SearchController
+        })
+        .when('/thankyou', {
+            templateUrl: 'pages/thankyou.html',
+            controller : ThankYouController
         });
 
     $mdThemingProvider.theme('blueTheme')
@@ -25,4 +29,5 @@ app.config(function($routeProvider, $mdThemingProvider){
 app.service("globalValues", function() {
     var globalValues = this;
     globalValues.rsvpName = "";
+    globalValues.family = {};
 });
