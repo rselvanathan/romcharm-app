@@ -1,5 +1,5 @@
 
-<md-content  layout="column" layout-align="center" flex>
+<md-content  layout="column" layout-align="center" style="background-color:#0277BD" md-theme="blueTheme" flex>
 
     <div layout="row" layout-align="center center">
           <form name="rsvpForm">
@@ -45,9 +45,9 @@
             </div>
 
            <div>
-              <md-button ng-disabled="isSubmitDisabled()" class="md-grid-item-content" ng-click="submitClick()">
+              <md-button ng-disabled="isSubmitDisabled()" class="md-fab md-primary" ng-click="submitClick()" md-theme="indigoTheme">
                 <md-icon>send</md-icon>
-                 <div class="md-grid-text">Submit</div>
+                <md-tooltip style="color:#000000">Submit</md-tooltip>
               </md-button>
             </div>
         

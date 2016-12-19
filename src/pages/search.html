@@ -1,17 +1,17 @@
 
-<md-content layout="column" layout-align="center" style="background-color:#0277BD" flex>
+<md-content layout="column" layout-align="center" style="background-color:#0277BD" md-theme="blueTheme" flex>
 
     <div layout="row" layout-align="center center">
       <div layout="column" flex = "15">
           <md-input-container class="md-block" style="font-size:28px">
-            <label style="color:#BDBDBD">Name on RSVP</label>
-            <input type="text" ng-model="globalValues.rsvpName" style="color:#E1F5FE"/>
+            <label>Name on RSVP</label>
+            <input type="text" ng-model="globalValues.rsvpName"/>
           </md-input-container>
         </div>
-        <div layout="column" layout-align="center center">  
+        <div layout="column" layout-align="center center" md-theme="indigoTheme">  
         <md-button class="md-fab md-primary" ng-click="buttonClick()">
             <md-icon>search</md-icon>
-            <md-tooltip>Search</md-tooltip>
+            <md-tooltip style="color:#000000">Search</md-tooltip>
         </md-button>
       </div>
     </div>
