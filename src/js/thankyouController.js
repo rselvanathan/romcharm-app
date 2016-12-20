@@ -1,4 +1,6 @@
 var ThankYouController = function($scope, globalValues) {
+    $scope.flexSize = 40;
+
     var family = globalValues.family;
 
     $scope.thankYouMessageOne = "Thank you " + family.firstName + " " + family.lastName;

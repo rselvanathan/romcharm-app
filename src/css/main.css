@@ -50,6 +50,11 @@ body {
   opacity: 0;
 }
 
+ng-map {
+  width : 300px;
+  height: 200px;
+}
+
 /* Slide */
 
 .slide {

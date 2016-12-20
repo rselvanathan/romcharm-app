@@ -1,4 +1,5 @@
 var RegisterController = function($scope, $http, $location,globalValues) {
+    $scope.flexSize = 40;
 
     $scope.form = {
         attendance : 'yesOption'

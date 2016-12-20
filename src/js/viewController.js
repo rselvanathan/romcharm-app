@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'ngAnimate']);
+var app = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'ngAnimate', 'ngMap']);
 
 app.config(function($routeProvider, $mdThemingProvider){
     $routeProvider
@@ -17,6 +17,10 @@ app.config(function($routeProvider, $mdThemingProvider){
         .when('/thankyou', {
             templateUrl: 'pages/thankyou.html',
             controller : ThankYouController
+        })
+        .when('/info', {
+            templateUrl: 'pages/info.html',
+            controller : InfoController
         });
 
     $mdThemingProvider.theme('blueTheme')

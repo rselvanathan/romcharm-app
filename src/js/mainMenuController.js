@@ -6,4 +6,8 @@ app.controller('mainMenuController', function($scope, $location) {
     $scope.rsvpClick = function() {
         $location.path('/search');
     };
+
+    $scope.infoClick = function() {
+        $location.path('/info');
+    }
 });

@@ -9,7 +9,8 @@
   "author": "Romesh Selvanathan <rselvanathan@omnifone.com>",
   "license": "ISC",
   "dependencies": {
-    "angular": "*"
+    "angular": "*",
+    "ngmap": "*"
   },
   "devDependencies": {
     "gulp": "*",

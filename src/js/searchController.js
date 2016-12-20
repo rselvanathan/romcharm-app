@@ -1,5 +1,6 @@
 
 var SearchController = function($scope, $http, $location, $mdDialog,globalValues) {
+    $scope.flexSize = 40;
 
     $scope.globalValues = globalValues;
 
