@@ -22,6 +22,11 @@ body {
   font-family: 'weddingFont';
 }
 
+ng-map {
+  width : 300px;
+  height: 200px;
+}
+
 /* Fade */
 
 .fade {
@@ -34,8 +39,8 @@ body {
 }
 .fade.ng-enter,
 .fade.ng-leave {
-  -webkit-transition: all 1s ease;
-  transition: all 1s ease;
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
 }
 .fade.ng-enter {
   opacity: 0;
@@ -48,11 +53,6 @@ body {
 }
 .fade.ng-leave-active {
   opacity: 0;
-}
-
-ng-map {
-  width : 300px;
-  height: 200px;
 }
 
 /* Slide */
