@@ -1,18 +1,40 @@
 
-<md-content layout="column" layout-align="center" style="background-color:#0277BD" md-theme="blueTheme" flex>
+<md-content layout="row" layout-align="center" style="background-color:#0277BD" md-theme="blueTheme" flex>
 
-    <div layout="row" layout-align="center center">
-      <div layout="column" flex = "15">
-          <md-input-container class="md-block" style="font-size:28px">
-            <label>Name on RSVP</label>
-            <input type="text" ng-model="globalValues.rsvpName"/>
-          </md-input-container>
+        <div layout="column" layout-align="center" flex="30">
+            <p>
+                It is very important to us, that you let us know whether or <br>
+                not you can attend the Reception
+            </p>
+
+            <h3>
+                Please let us know if you can make it by June 30th at the latest.
+            </h3>
+
+            <p>
+                Please search for the password name given on the RSVP card and fill <br>
+                in the form to inform us whether you are coming to the event. <br>
+                Below you'll find all necessary contact info in case you have questions.
+            </p>
+
+            <p>
+                Email: placeholder@placeholder.com <br>
+                Phone : Contact Romesh or Charmikha directly, or indirectly through their parents.
+            </p>
         </div>
-        <div layout="column" layout-align="center center" md-theme="indigoTheme">  
-        <md-button class="md-fab md-primary" ng-click="buttonClick()">
-            <md-icon>search</md-icon>
-            <md-tooltip style="color:#000000">Search</md-tooltip>
-        </md-button>
-      </div>
-    </div>
+
+        <div layout="row" layout-align="start center" flex="50">
+          <div layout="column" flex = "25">
+              <md-input-container class="md-block" style="font-size:28px">
+                <label>Name on RSVP</label>
+                <input type="text" ng-model="globalValues.rsvpName"/>
+              </md-input-container>
+            </div>
+            <div layout="column" layout-align="center center" md-theme="indigoTheme">
+            <md-button class="md-fab md-primary" ng-click="buttonClick()">
+                <md-icon>search</md-icon>
+                <md-tooltip style="color:#000000">Search</md-tooltip>
+            </md-button>
+          </div>
+        </div>
 </md-content>
