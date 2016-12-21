@@ -1,41 +1,28 @@
-var app = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'ngAnimate', 'ngMap']);
+var ViewController = function ($scope, $rootScope, $location) {
+  $rootScope.$on('viewChange', function(event, data) {
+      if(data.screenType === screenTypes.homeView) {
+          $location.path("/");
+      }
+      if(data.screenType === screenTypes.searchView) {
+          $location.path("/search");
+      }
+      if(data.screenType === screenTypes.infoView) {
+          $location.path("/info");
+      }
+  });
 
-app.config(function($routeProvider, $mdThemingProvider){
-    $routeProvider
-        .when('/', {
-            templateUrl : 'pages/home.html',
-            controller : HomeController
-        })
-        .when('/register', {
-            templateUrl : 'pages/register.html',
-            controller : RegisterController
-        })
-        .when('/search', {
-            templateUrl : 'pages/search.html',
-            controller : SearchController
-        })
-        .when('/thankyou', {
-            templateUrl: 'pages/thankyou.html',
-            controller : ThankYouController
-        })
-        .when('/info', {
-            templateUrl: 'pages/info.html',
-            controller : InfoController
-        });
-
-    $mdThemingProvider.theme('blueTheme')
-        .primaryPalette('light-blue')
-        .accentPalette('cyan')
-        .dark() ; 
-
-    $mdThemingProvider.theme('indigoTheme')
-        .primaryPalette('indigo')
-        .accentPalette('blue')
-        .dark() ;      
-});
-
-app.service("globalValues", function() {
-    var globalValues = this;
-    globalValues.rsvpName = "";
-    globalValues.family = {};
-});
+    $scope.$on('viewChange', function(event, data) {
+        if(data.screenType === screenTypes.searchView) {
+            $location.path("/search");
+        }
+        if(data.screenType === screenTypes.registerView) {
+            $location.path("/register");
+        }
+        if(data.screenType === screenTypes.infoView) {
+            $location.path("/info");
+        }
+        if(data.screenType === screenTypes.thankYouView) {
+            $location.path("/thankyou");
+        }
+    });
+};

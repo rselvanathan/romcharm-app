@@ -1,7 +1,7 @@
-var HomeController = function($scope, $location, globalValues) {
+var HomeController = function($scope) {
     $scope.flexSize = 60;
 
     $scope.rsvpClick = function() {
-        $location.path('/search');
+        $scope.$emit('viewChange', {screenType : screenTypes.searchView})
     };
 };

@@ -69,7 +69,7 @@ var RegisterController = function($scope, $http, $location,globalValues) {
             console.log(response.status);
             if (response.status === 201) {
                 globalValues.family = body;
-                $location.path('/thankyou');
+                $scope.$emit('viewChange', {screenType : screenTypes.thankYouView})
             }
         }, function errorCallback(response){
             console.log(response.status)

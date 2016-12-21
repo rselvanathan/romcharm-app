@@ -1,4 +1,3 @@
-
 var SearchController = function($scope, $http, $location, $mdDialog,globalValues) {
     $scope.flexSize = 40;
 
@@ -18,7 +17,7 @@ var SearchController = function($scope, $http, $location, $mdDialog,globalValues
                     'Already Registered Dialog'
                 );
             } else {
-                $location.path('/register');
+                $scope.$emit('viewChange', {screenType : screenTypes.registerView})
             }
         }, function errorCallback(response) {
             if(response.status == 404) {

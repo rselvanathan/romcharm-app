@@ -8,6 +8,6 @@ var ThankYouController = function($scope, globalValues) {
     if(family.areAttending) {
         $scope.thankYouMessageTwo = "We are looking forward to seeing you on the day"
     } else {
-        $scope.thankYouMessageTwo = "We hope to see you soon";
+        $scope.thankYouMessageTwo = "For letting us know";
     }
 };

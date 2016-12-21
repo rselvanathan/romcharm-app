@@ -1,13 +1,13 @@
-app.controller('mainMenuController', function($scope, $location) {
+app.controller('mainMenuController', function($scope, $rootScope) {
     $scope.homeClick = function() {
-        $location.path('/');
+        $rootScope.$broadcast('viewChange', {screenType : screenTypes.homeView})
     };
 
     $scope.rsvpClick = function() {
-        $location.path('/search');
+        $rootScope.$broadcast('viewChange', {screenType : screenTypes.searchView})
     };
 
     $scope.infoClick = function() {
-        $location.path('/info');
+        $rootScope.$broadcast('viewChange', {screenType : screenTypes.infoView})
     }
 });
