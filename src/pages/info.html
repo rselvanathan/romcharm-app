@@ -1,4 +1,4 @@
-<md-content layout="column" layout-align="center" style="background-color:#0277BD" flex>
+<md-content layout="column" layout-align="center" style="background-color:#0277BD" flex hide show-gt-sm>
 
     <div layout="row" layout-align="center" flex="85" layout-xs="column">
         <div name="ceremony" layout="column" layout-align="center" flex = "40">
@@ -64,3 +64,62 @@
     </div>
 
 </md-content>
+
+<!-- Small Screen -->
+<!-- Extra div to enable scrolling - otherwise angular material won't scroll for content-->
+<div layout="column" flex hide-gt-sm show-sm>
+    <md-content layout="column" flex style="background-color:#0277BD; position: absolute; height: 1000px; width: 100% ">
+
+            <div name="ceremony" layout="column" flex>
+
+                <div layout="column" layout-align="start center" flex="40">
+                    <ng-map default-style="false" center="[51.695724, -0.151181]">
+                        <marker position="[51.695724, -0.151181]"/>
+                    </ng-map>
+                </div>
+
+                <div layout="column" layout-align="center center" class="weddingFont md-display-2" flex = "20">
+                    <h2>Wedding</h2>
+                </div>
+
+                <div layout="column" layout-align="center center" class="weddingFont md-display-1" flex = "10">
+                    <h3>07 July 2017</h3>
+                </div>
+
+                <div layout="column" layout-align="start center" flex>
+                        <p>Oshwal Centre<br>
+                            Cuffley, Potters Bar<br>
+                            EN6 4DG
+                        </p>
+                </div>
+
+            </div>
+
+            <div name="reception" layout="column"  flex>
+
+                <div layout="column" layout-align="start center" flex="40">
+                    <ng-map default-style="false" center="[51.480753, -0.41767]">
+                        <marker position="[51.480753, -0.41767]"/>
+                    </ng-map>
+                </div>
+
+                <div layout="column" layout-align="center center" class="weddingFont md-display-2" flex = "20">
+                    <h2>Reception</h2>
+                </div>
+
+                <div layout="column" layout-align="center center" class="weddingFont md-display-1" flex = "10">
+                    <h3>08 July 2017</h3>
+                </div>
+
+                <div layout="column" layout-align="start center" flex>
+                        <p>1A Bath Rd <br>
+                            Heathrow<br>
+                            Hounslow<br>
+                            Middlesex<br>
+                            TW6 2AA
+                        </p>
+                </div>
+            </div>
+
+    </md-content>
+</div>
