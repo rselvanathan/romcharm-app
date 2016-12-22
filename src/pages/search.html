@@ -1,5 +1,5 @@
 
-<md-content layout="row" layout-align="center" style="background-color:#0277BD" md-theme="blueTheme" flex>
+<md-content layout="row" layout-align="center" style="background-color:#0277BD" md-theme="blueTheme" flex hide show-gt-sm>
 
         <div layout="column" layout-align="center" flex="30">
             <p>
@@ -14,7 +14,7 @@
             <p>
                 Please search for the password name given on the RSVP card and fill <br>
                 in the form to inform us whether you are coming to the event. <br>
-                Below you'll find all necessary contact info in case you have questions.
+                Below you'll find all the necessary contact info in case you have questions.
             </p>
 
             <p>
@@ -37,4 +37,40 @@
             </md-button>
           </div>
         </div>
+</md-content>
+
+<!-- Small Screen Layout -->
+
+<md-content layout="column" layout-align="center center" style="background-color:#0277BD;" md-theme="blueTheme" flex hide-gt-sm show-sm>
+
+    <div layout="row" layout-align="center center" flex = "30">
+        <div layout="column" layout-align="center" flex="75">
+            <md-input-container class="md-headline">
+                <label>Name on RSVP</label>
+                <input type="text" ng-model="globalValues.rsvpName"/>
+            </md-input-container>
+        </div>
+        <div layout="column" layout-align="center" md-theme="indigoTheme" flex>
+            <md-button class="md-fab md-primary md-mini" ng-click="buttonClick()">
+                <md-icon>search</md-icon>
+                <md-tooltip style="color:#000000">Search</md-tooltip>
+            </md-button>
+        </div>
+    </div>
+
+    <div layout="column" layout-align="start start" class="md-caption" flex=>
+        <h3>
+            Please let us know if you can make it by June 30th at the latest.
+        </h3>
+
+        <p>
+            Please search for the password name given on the RSVP card. <br>
+            Below you'll find all the necessary contact info in case you have questions.
+        </p>
+
+        <p>
+            Email: placeholder@placeholder.com <br>
+            Phone : Contact Romesh or Charmikha directly
+        </p>
+    </div>
 </md-content>
