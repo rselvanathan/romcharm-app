@@ -10,9 +10,13 @@ app.config(function($routeProvider, $mdThemingProvider){
             templateUrl : 'pages/register.html',
             controller : RegisterController
         })
-        .when('/search', {
-            templateUrl : 'pages/search.html',
-            controller : SearchController
+        .when('/searchUser', {
+            templateUrl : 'pages/searchUser.html',
+            controller : SearchUserController
+        })
+        .when('/searchEmail', {
+            templateUrl : 'pages/searchEmail.html',
+            controller : SearchEmailController
         })
         .when('/thankyou', {
             templateUrl: 'pages/thankyou.html',
@@ -40,4 +44,5 @@ app.service("globalValues", function() {
     var globalValues = this;
     globalValues.rsvpName = "";
     globalValues.family = {};
+    globalValues.email = "";
 });

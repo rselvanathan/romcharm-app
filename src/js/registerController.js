@@ -38,10 +38,9 @@ var RegisterController = function($scope, $http, $location,globalValues) {
             pNumberAttending = form.attendingNumber;
         }
         var body = {
-            rsvpName : globalValues.rsvpName,
+            email : globalValues.email,
             firstName : form.firstName,
             lastName : form.lastName,
-            registered : true,
             areAttending : isAttending(),
             numberAttending : pNumberAttending
         }
@@ -56,7 +55,6 @@ var RegisterController = function($scope, $http, $location,globalValues) {
 
      $scope.submitClick = function() {
         var body = generateBody();
-        // var jsonBody = JSON.stringify(body);
         console.log(body);
         $http({
             method:"PUT",

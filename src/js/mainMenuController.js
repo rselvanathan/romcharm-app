@@ -4,7 +4,7 @@ app.controller('mainMenuController', function($scope, $rootScope) {
     };
 
     $scope.rsvpClick = function() {
-        $rootScope.$broadcast('viewChange', {screenType : screenTypes.searchView})
+        $rootScope.$broadcast('viewChange', {screenType : screenTypes.searchUserView})
     };
 
     $scope.infoClick = function() {

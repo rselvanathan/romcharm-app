@@ -1,7 +1,8 @@
 var screenTypes = {
     homeView : 'homeView',
     registerView : 'registerView',
-    searchView : 'searchView',
+    searchUserView : 'searchUserView',
+    searchEmailView : 'searchEmailView',
     thankYouView : 'thankYouView',
     infoView : 'infoView'
 };

@@ -3,8 +3,8 @@ var ViewController = function ($scope, $rootScope, $location) {
       if(data.screenType === screenTypes.homeView) {
           $location.path("/");
       }
-      if(data.screenType === screenTypes.searchView) {
-          $location.path("/search");
+      if(data.screenType === screenTypes.searchUserView) {
+          $location.path("/searchUser");
       }
       if(data.screenType === screenTypes.infoView) {
           $location.path("/info");
@@ -12,8 +12,11 @@ var ViewController = function ($scope, $rootScope, $location) {
   });
 
     $scope.$on('viewChange', function(event, data) {
-        if(data.screenType === screenTypes.searchView) {
-            $location.path("/search");
+        if(data.screenType === screenTypes.searchUserView) {
+            $location.path("/searchUser");
+        }
+        if(data.screenType === screenTypes.searchEmailView) {
+            $location.path("/searchEmail");
         }
         if(data.screenType === screenTypes.registerView) {
             $location.path("/register");

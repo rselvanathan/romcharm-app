@@ -1,0 +1,40 @@
+
+
+    <md-content layout="row" layout-align="center" style="background-color:#0277BD" md-theme="blueTheme" flex hide show-gt-sm>
+
+            <div layout="row" layout-align="center center" flex>
+              <div layout="column" flex = "25">
+                  <md-input-container class="md-block md-display-1">
+                    <label>E-mail</label>
+                    <input type="email" ng-model="globalValues.email"/>
+                  </md-input-container>
+                </div>
+                <div layout="column" layout-align="center center" md-theme="indigoTheme">
+                <md-button class="md-fab md-primary" ng-click="buttonClick()">
+                    <md-icon>send</md-icon>
+                    <md-tooltip style="color:#000000">Send</md-tooltip>
+                </md-button>
+              </div>
+            </div>
+    </md-content>
+
+    <!-- Small Screen Layout -->
+
+    <md-content layout="column" layout-align="center center" style="background-color:#0277BD;" md-theme="blueTheme" flex hide-gt-sm show-sm>
+
+        <div layout="row" layout-align="center center" flex>
+            <div layout="column" layout-align="center" flex="75">
+                <md-input-container class="md-headline">
+                     <label>E-mail</label>
+                     <input type="email" ng-model="globalValues.email"/>
+                </md-input-container>
+            </div>
+            <div layout="column" layout-align="center" md-theme="indigoTheme" flex>
+                <md-button class="md-fab md-primary md-mini" ng-click="buttonClick()">
+                     <md-icon>send</md-icon>
+                     <md-tooltip style="color:#000000">Send</md-tooltip>
+                </md-button>
+            </div>
+        </div>
+
+    </md-content>
