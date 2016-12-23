@@ -23,7 +23,6 @@ var SearchUserController = function($scope, $http, $location, $mdDialog, globalV
             console.log(responseUserName.data);
             /** Request for email */
             var encodedURI = encodeURIComponent(email);
-            console.log(encodedURI);
             $http({
                 url:"http://localhost:8080/families/"+encodedURI,
                 method:"GET",

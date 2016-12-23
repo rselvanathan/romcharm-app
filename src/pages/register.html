@@ -1,56 +1,71 @@
+<div layout="column"  flex>
+  <md-content layout="column" layout-align="center" style="background-color:#0277BD; position: absolute; height: 500px; width: 100%" md-theme="blueTheme" flex>
 
-<md-content layout="column" layout-align="center" style="background-color:#0277BD" md-theme="blueTheme" flex>
+      <div layout="row" layout-align="center center">
+            <form name="rsvpForm">
 
-    <div layout="row" layout-align="center center">
-          <form name="rsvpForm">
-            
-            <div layout="row">
-              <md-input-container class="md-block">
-                <label>First Name</label>
-                <input ng-model="form.firstName" required/>
-              </md-input-container>  
+              <div layout="row">
+                <md-input-container class="md-block">
+                  <label>First Name</label>
+                  <input ng-model="form.firstName" required/>
+                </md-input-container>
 
-              <md-input-container class="md-block">
-                <label>Last Name</label>
-                <input ng-model="form.lastName" required/>
-              </md-input-container>  
-            </div>
+                <md-input-container class="md-block">
+                  <label>Last Name</label>
+                  <input ng-model="form.lastName" required/>
+                </md-input-container>
+              </div>
 
-            <div layout="row">
-              <md-input-container class="md-block">
-                <label>Attending</label>
-                <md-select ng-model="form.attendance" required>
-                  <md-option value="yesOption">Yes</md-option>
-                  <md-option value="noOption">No</md-option>
-                </md-select>  
-              </md-input-container>
-            </div>
+              <div layout="column" layout-align="center">
+                <md-input-container class="md-block">
+                  <label>E-mail</label>
+                  <input type="email" name="email" ng-model="form.email" ng-pattern="/^.+@.+\..+$/"/>
 
-            <div layout="row">
-              <md-input-container class="md-block">
-                <label>Total number attending</label>
-                <input type="number" ng-model="form.attendingNumber" name="attendingNumber" min="1" max="10" ng-disabled="isDisabled()"/>
-                  
-                <div ng-messages="rsvpForm.attendingNumber.$error">
-                  <div ng-message="min">
-                    The minimum number has to be 1 (Person registering) if attending
+
+                  <div ng-messages="rsvpForm.email.$error">
+                    <div ng-message="pattern">
+                      Please type in a valid e-mail address (name@domain.com)
+                    </div>
                   </div>
-                  
-                  <div ng-message="max">
-                    Unfortunatly we only allow up to 10 guests per RSVP.
+                </md-input-container>
+              </div>
+
+              <div layout="row">
+                <md-input-container class="md-block">
+                  <label>Attending</label>
+                  <md-select ng-model="form.attendance" required>
+                    <md-option value="yesOption">Yes</md-option>
+                    <md-option value="noOption">No</md-option>
+                  </md-select>
+                </md-input-container>
+              </div>
+
+              <div layout="row">
+                <md-input-container class="md-block">
+                  <label>Total number attending</label>
+                  <input type="number" ng-model="form.attendingNumber" name="attendingNumber" min="1" max="10" ng-disabled="isDisabled()"/>
+
+                  <div ng-messages="rsvpForm.attendingNumber.$error">
+                    <div ng-message="min">
+                      The minimum number has to be 1 (Person registering) if attending
+                    </div>
+
+                    <div ng-message="max">
+                      Unfortunatly we only allow up to 10 guests per RSVP.
+                    </div>
                   </div>
-                </div>
-              </md-input-container>
+                </md-input-container>
 
-            </div>
+              </div>
 
-           <div>
-              <md-button ng-disabled="isSubmitDisabled()" class="md-fab md-primary" ng-click="submitClick()" md-theme="indigoTheme">
-                <md-icon>send</md-icon>
-                <md-tooltip style="color:#000000">Submit</md-tooltip>
-              </md-button>
-            </div>
-        
-          </form>
-    </div>       
-</md-content>
+             <div>
+                <md-button ng-disabled="isSubmitDisabled()" class="md-fab md-primary" ng-click="submitClick()" md-theme="indigoTheme">
+                  <md-icon>send</md-icon>
+                  <md-tooltip style="color:#000000">Submit</md-tooltip>
+                </md-button>
+              </div>
+
+            </form>
+      </div>
+  </md-content>
+</div>

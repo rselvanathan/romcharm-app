@@ -1,8 +1,11 @@
-var RegisterController = function($scope, $http, $location,globalValues) {
-    $scope.flexSize = 40;
+var RegisterController = function($scope, $http, $location, globalValues) {
+    $scope.flexSize = 50;
+
+    $scope.globalValues = globalValues;
 
     $scope.form = {
-        attendance : 'yesOption'
+        attendance : 'yesOption',
+        email: $scope.globalValues.email
     };
 
     $scope.isDisabled = function() {
@@ -22,7 +25,11 @@ var RegisterController = function($scope, $http, $location,globalValues) {
 
     $scope.isSubmitDisabled = function() {
         var form = $scope.form;
-        if(!form.firstName || !form.lastName || (form.attendance === 'yesOption' && !form.attendingNumber)) {
+        if(!form.firstName ||
+            !form.lastName ||
+            (form.attendance === 'yesOption' && !form.attendingNumber) ||
+            !form.email ||
+            $scope.rsvpForm.email.$error.pattern) {
             return true;
         } else {
             return false;
