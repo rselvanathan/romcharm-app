@@ -23,54 +23,81 @@
             </p>
         </div>
 
-        <div layout="row" layout-align="start center" flex="50">
-          <div layout="column" flex = "25">
-              <md-input-container class="md-block md-display-1">
-                <label>RSVP Password</label>
-                <input type="text" ng-model="globalValues.rsvpName"/>
-              </md-input-container>
+            <div layout="row" layout-align="start center" flex="50">
+
+              <div layout="column" flex = "50">
+
+                <div layout="column" flex>
+                  <md-input-container class="md-block md-display-1">
+                    <label>RSVP Password</label>
+                    <input type="text" ng-model="globalValues.rsvpName"/>
+                  </md-input-container>
+                </div>
+
+                <div layout="column" flex>
+                  <md-input-container class="md-block md-display-1">
+                     <label>E-mail</label>
+                     <input type="email" name="email" ng-model="globalValues.email" ng-pattern="/^.+@.+\..+$/"/>
+                  </md-input-container>
+                </div>
+
+              </div>
+
+              <div layout="column" layout-align="center center" md-theme="indigoTheme">
+                <md-button class="md-fab md-primary" ng-click="buttonClick()">
+                    <md-icon>search</md-icon>
+                    <md-tooltip style="color:#000000">Search</md-tooltip>
+                </md-button>
+              </div>
+
             </div>
-            <div layout="column" layout-align="center center" md-theme="indigoTheme">
-            <md-button class="md-fab md-primary" ng-click="buttonClick()">
-                <md-icon>search</md-icon>
-                <md-tooltip style="color:#000000">Search</md-tooltip>
-            </md-button>
-          </div>
+
         </div>
 </md-content>
 
 <!-- Small Screen Layout -->
+<div layout="column" flex hide-gt-sm show-sm>
+    <md-content layout="column" layout-align="center center"
+                style="background-color:#0277BD; position: absolute; height: 500px; width: 100%"
+                md-theme="blueTheme"  flex hide-gt-sm show-sm>
 
-<md-content layout="column" layout-align="center center" style="background-color:#0277BD;" md-theme="blueTheme" flex hide-gt-sm show-sm>
-
-    <div layout="row" layout-align="center center" flex = "30">
-        <div layout="column" layout-align="center" flex="75">
-            <md-input-container class="md-headline">
-                <label>RSVP Password</label>
-                <input type="text" ng-model="globalValues.rsvpName"/>
-            </md-input-container>
+        <div layout="row" layout-align="center center" flex = "50">
+            <div layout="column" flex = "70">
+                <div layout="column" layout-align="center" flex="35">
+                    <md-input-container class="md-headline">
+                        <label>RSVP Password</label>
+                        <input type="text" ng-model="globalValues.rsvpName"/>
+                    </md-input-container>
+                </div>
+                <div layout="column" layout-align="center" flex="35">
+                    <md-input-container class="md-headline">
+                        <label>E-mail</label>
+                        <input type="email" name="email" ng-model="globalValues.email" ng-pattern="/^.+@.+\..+$/"/>
+                    </md-input-container>
+                </div>
+            </div>
+            <div layout="column" layout-align="start" md-theme="indigoTheme" flex>
+                <md-button class="md-fab md-primary md-mini" ng-click="buttonClick()">
+                    <md-icon>search</md-icon>
+                    <md-tooltip style="color:#000000">Search</md-tooltip>
+                </md-button>
+            </div>
         </div>
-        <div layout="column" layout-align="center" md-theme="indigoTheme" flex>
-            <md-button class="md-fab md-primary md-mini" ng-click="buttonClick()">
-                <md-icon>search</md-icon>
-                <md-tooltip style="color:#000000">Search</md-tooltip>
-            </md-button>
+
+        <div layout="column" layout-align="start start" class="md-caption" flex=>
+            <h3>
+                Please let us know if you can make it by June 30th at the latest.
+            </h3>
+
+            <p>
+                Please search for the password name given on the RSVP card. <br>
+                Below you'll find all the necessary contact info in case you have questions.
+            </p>
+
+            <p>
+                Email: placeholder@placeholder.com <br>
+                Phone : Contact Romesh or Charmikha directly
+            </p>
         </div>
-    </div>
-
-    <div layout="column" layout-align="start start" class="md-caption" flex=>
-        <h3>
-            Please let us know if you can make it by June 30th at the latest.
-        </h3>
-
-        <p>
-            Please search for the password name given on the RSVP card. <br>
-            Below you'll find all the necessary contact info in case you have questions.
-        </p>
-
-        <p>
-            Email: placeholder@placeholder.com <br>
-            Phone : Contact Romesh or Charmikha directly
-        </p>
-    </div>
-</md-content>
+    </md-content>
+</div>

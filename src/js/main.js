@@ -14,10 +14,6 @@ app.config(function($routeProvider, $mdThemingProvider){
             templateUrl : 'pages/searchUser.html',
             controller : SearchUserController
         })
-        .when('/searchEmail', {
-            templateUrl : 'pages/searchEmail.html',
-            controller : SearchEmailController
-        })
         .when('/thankyou', {
             templateUrl: 'pages/thankyou.html',
             controller : ThankYouController

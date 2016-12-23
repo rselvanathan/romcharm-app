@@ -15,9 +15,6 @@ var ViewController = function ($scope, $rootScope, $location) {
         if(data.screenType === screenTypes.searchUserView) {
             $location.path("/searchUser");
         }
-        if(data.screenType === screenTypes.searchEmailView) {
-            $location.path("/searchEmail");
-        }
         if(data.screenType === screenTypes.registerView) {
             $location.path("/register");
         }
