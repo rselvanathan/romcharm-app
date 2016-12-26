@@ -15,8 +15,11 @@
   "devDependencies": {
     "gulp": "*",
     "gulp-util": "*",
-    "gulp-minify" : "*",
+    "gulp-uglify" : "*",
     "gulp-concat" : "*",
-    "gulp-connect" : "*"
+    "gulp-connect" : "*",
+    "gulp-clean" : "*",
+    "gulp-order" : "*",
+    "gulp-ng-annotate" : "*"
   }
 }

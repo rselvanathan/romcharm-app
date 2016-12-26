@@ -1,4 +1,4 @@
-app.controller('mainMenuController', function($scope, $rootScope) {
+var MainMenuController = function($scope, $rootScope) {
     $scope.homeClick = function() {
         $rootScope.$broadcast('viewChange', {screenType : screenTypes.homeView})
     };
@@ -10,4 +10,4 @@ app.controller('mainMenuController', function($scope, $rootScope) {
     $scope.infoClick = function() {
         $rootScope.$broadcast('viewChange', {screenType : screenTypes.infoView})
     }
-});
+};

@@ -1,5 +1,8 @@
 var app = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'ngAnimate', 'ngMap']);
 
+app.controller('viewController', ViewController);
+app.controller('mainMenuController', MainMenuController);
+
 app.config(function($routeProvider, $mdThemingProvider){
     $routeProvider
         .when('/', {
@@ -33,8 +36,6 @@ app.config(function($routeProvider, $mdThemingProvider){
         .accentPalette('blue')
         .dark() ;      
 });
-
-app.controller('viewController', ViewController);
 
 app.service("globalValues", function() {
     var globalValues = this;
