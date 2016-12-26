@@ -1,4 +1,4 @@
-var SearchUserController = function($scope, $http, $location, $mdDialog, globalValues) {
+var SearchUserController = function($scope, $http, $location, $mdDialog, globalValues, baseApiUrl) {
     $scope.flexSize = 40;
 
     $scope.globalValues = globalValues;
@@ -17,14 +17,14 @@ var SearchUserController = function($scope, $http, $location, $mdDialog, globalV
         }
 
         $http({
-            url:"http://localhost:8080/users/"+rsvpName,
+            url:baseApiUrl+"users/"+rsvpName,
             method:"GET",
         }).then(function successCallback(responseUserName) {
             console.log(responseUserName.data);
             /** Request for email */
             var encodedURI = encodeURIComponent(email);
             $http({
-                url:"http://localhost:8080/families/"+encodedURI,
+                url: baseApiUrl+"families/"+encodedURI,
                 method:"GET",
                 "headers": {
                     "Content-Type":"application/x-www-form-urlencoded"

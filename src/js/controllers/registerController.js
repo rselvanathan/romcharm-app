@@ -1,4 +1,4 @@
-var RegisterController = function($scope, $http, $location, globalValues) {
+var RegisterController = function($scope, $http, $location, globalValues, baseApiUrl) {
     $scope.flexSize = 50;
 
     $scope.globalValues = globalValues;
@@ -65,7 +65,7 @@ var RegisterController = function($scope, $http, $location, globalValues) {
         console.log(body);
         $http({
             method:"PUT",
-            url:"http://localhost:8080/families/family",
+            url: baseApiUrl+"families/family",
             data: body,
             "headers":{
                 "Content-Type":"application/json"

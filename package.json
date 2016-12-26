@@ -20,6 +20,7 @@
     "gulp-connect" : "*",
     "gulp-clean" : "*",
     "gulp-order" : "*",
-    "gulp-ng-annotate" : "*"
+    "gulp-ng-annotate" : "*",
+    "gulp-replace-task" : "*"
   }
 }

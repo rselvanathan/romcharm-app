@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'ngAnimate', 'ngMap']);
+var app = angular.module('myApp', ['myApp.config','ngRoute', 'ngMaterial', 'ngMessages', 'ngAnimate', 'ngMap']);
 
 app.controller('viewController', ViewController);
 app.controller('mainMenuController', MainMenuController);
