@@ -24,7 +24,7 @@ gulp.task('copyMain', function() {
     gulp.src('src/customlibs/**/*').pipe(gulp.dest('build/customlibs'));
 });
 
-gulp.task('replaceRelease', function() {
+gulp.task('replaceDev', function() {
     gulp.src('src/js/controllers/**/*').pipe(gulp.dest('inter/js/controllers/'));
     gulp.src('src/js/*.js').pipe(gulp.dest('inter/js/'));
 
@@ -40,7 +40,7 @@ gulp.task('replaceRelease', function() {
         .pipe(gulp.dest('inter/js/config/app-config.js'));
 });
 
-gulp.task('replaceDev', function() {
+gulp.task('replaceRelease', function() {
     gulp.src('src/js/controllers/**/*').pipe(gulp.dest('inter/js/controllers/'));
     gulp.src('src/js/*.js').pipe(gulp.dest('inter/js/'));
 
