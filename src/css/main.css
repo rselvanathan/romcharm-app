@@ -8,12 +8,22 @@ body {
 
 @font-face {
   font-family: 'weddingFont';
-  src: url('../fonts/karina_aime_les_chocolats.ttf');
+  src: url('../fonts/KarineaimelesChocolats.eot');
+  src: local('Leslie aime les Chocolats'), local('KarineaimelesChocolats'),
+  url('../fonts/KarineaimelesChocolats.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/KarineaimelesChocolats.woff') format('woff'),
+  url('../fonts/KarineaimelesChocolats.ttf') format('truetype'),
+  url('../fonts/KarineaimelesChocolats.svg#KarineaimelesChocolats') format('svg');
 }
 
 @font-face {
   font-family: 'weddingFont';
-  src: url('../fonts/karina_aime_les_chocolats.ttf');
+  src: url('../fonts/KarineaimelesChocolats.eot');
+  src: local('Leslie aime les Chocolats'), local('KarineaimelesChocolats'),
+  url('../fonts/KarineaimelesChocolats.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/KarineaimelesChocolats.woff') format('woff'),
+  url('../fonts/KarineaimelesChocolats.ttf') format('truetype'),
+  url('../fonts/KarineaimelesChocolats.svg#KarineaimelesChocolats') format('svg');
   font-weight: bold;
 }
 
