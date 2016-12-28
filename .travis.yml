@@ -1,0 +1,34 @@
+notifications:
+  email:
+    recipients:
+     - romesh69@hotmail.com
+
+    on_success: never
+    on_failure: change
+
+# safelist
+branches:
+  only:
+  - master
+
+language: node_js
+sudo: required
+services:
+  - docker
+
+# Build the Java app
+node_js:
+  - node
+before_script:
+  - npm install
+  - npm install -g gulp
+script :
+  - gulp buildRelease
+
+#Build the Docker image and push to registry
+after_success:
+  - docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
+  - docker build -t rselvanathan/romcharm-app:latest .
+  - docker push rselvanathan/romcharm-app
+
+
