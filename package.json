@@ -1,12 +1,12 @@
 {
-  "name": "romcharm-frontend",
+  "name": "romcharm-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "test"
   },
-  "author": "Romesh Selvanathan <rselvanathan@omnifone.com>",
+  "author": "Romesh Selvanathan",
   "license": "ISC",
   "dependencies": {
     "angular": "*",
