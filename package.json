@@ -21,6 +21,7 @@
     "gulp-clean" : "*",
     "gulp-order" : "*",
     "gulp-ng-annotate" : "*",
-    "gulp-replace-task" : "*"
+    "gulp-replace-task" : "*",
+    "merge-stream" : "*"
   }
 }
