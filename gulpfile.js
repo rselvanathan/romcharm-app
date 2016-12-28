@@ -101,7 +101,7 @@ gulp.task('watchBuild', function ()  {
 
 gulp.task('deployDev', ['connectBuild', 'watchDev']);
 
-gulp.task('buildRelease', ['minifyJSRelease']);
 gulp.task('buildDev', ['copyMain' , 'replaceDev', 'minifyJS']);
+gulp.task('buildRelease', ['minifyJSRelease']);
 
 gulp.task('deployBuild', ['connectBuild', 'watchBuild'])
