@@ -28,10 +28,10 @@ gulp.task('copyMain', ['clean'],function() {
 });
 
 gulp.task('replaceDev', ['copyMain'], function() {
-    gulp.src('src/js/controllers/**/*').pipe(gulp.dest('inter/js/controllers/'));
-    gulp.src('src/js/*.js').pipe(gulp.dest('inter/js/'));
+    var tempCopy = gulp.src('src/js/controllers/**/*').pipe(gulp.dest('inter/js/controllers/'));
+    var tempCopyTwo = gulp.src('src/js/*.js').pipe(gulp.dest('inter/js/'));
 
-    gulp.src('src/js/config/app-config.js')
+    var rename = gulp.src('src/js/config/app-config.js')
         .pipe(replace({
             patterns : [
                 {
@@ -41,6 +41,7 @@ gulp.task('replaceDev', ['copyMain'], function() {
             ]
         }))
         .pipe(gulp.dest('inter/js/config/app-config.js'));
+    return merge(tempCopy, tempCopyTwo, rename);
 });
 
 gulp.task('replaceRelease', ['copyMain'] ,function() {
@@ -74,6 +75,19 @@ gulp.task('minifyJSRelease', ['replaceRelease'], function() {
         .pipe(gulp.dest('build/js'))
 });
 
+gulp.task('minifyJSDev', ['replaceDev'], function() {
+    return gulp.src('inter/js/**/*.js')
+        .pipe(order([
+            "config/**/*.js",
+            "controllers/**/*.js",
+            "main.js"
+        ]))
+        .pipe(concat('romcharm.js'))
+        .pipe(ngAnnotate())
+        .pipe(uglify())
+        .pipe(gulp.dest('build/js'))
+});
+
 gulp.task('connect', function() {
    connect.server({root:'src', port:8081});
 });
@@ -82,7 +96,7 @@ gulp.task('connectBuild', function() {
     connect.server({root:'build', port:8081});
 });
 
-gulp.task('reload', function() {
+gulp.task('reloadDev', ['minifyJSDev'],function() {
     gulp.src('src/**/*').pipe(connect.reload());
 });
 
@@ -91,7 +105,7 @@ gulp.task('reloadBuild', ['minifyJSRelease'], function() {
 });
 
 gulp.task('watchDev', function() {
-    gulp.watch('src/**/*', ['reloadBuild']);
+    gulp.watch('src/**/*', ['reloadDev']);
 });
 
 gulp.task('watchBuild', function ()  {
@@ -101,7 +115,7 @@ gulp.task('watchBuild', function ()  {
 
 gulp.task('deployDev', ['connectBuild', 'watchDev']);
 
-gulp.task('buildDev', ['copyMain' , 'replaceDev', 'minifyJS']);
+gulp.task('buildDev', ['minifyJSDev']);
 gulp.task('buildRelease', ['minifyJSRelease']);
 
 gulp.task('deployBuild', ['connectBuild', 'watchBuild'])

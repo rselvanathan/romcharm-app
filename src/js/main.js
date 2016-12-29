@@ -42,4 +42,5 @@ app.service("globalValues", function() {
     globalValues.rsvpName = "";
     globalValues.family = {};
     globalValues.email = "";
+    globalValues.authenticated = false;
 });

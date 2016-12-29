@@ -3,15 +3,21 @@ var RegisterController = function($scope, $http, $location, globalValues, baseAp
 
     $scope.globalValues = globalValues;
 
+    // Will check for authentication and reset the value if the user has
+    if($scope.globalValues.authenticated === false) {
+        $scope.$emit('viewChange', {screenType : screenTypes.searchUserView});
+        return;
+    } else {
+        $scope.globalValues.authenticated = false;
+    }
+
     $scope.form = {
         attendance : 'yesOption',
         email: $scope.globalValues.email
     };
 
     $scope.isDisabled = function() {
-        if($scope.form.attendance === 'yesOption')
-            return false;
-        else return true;    
+        return $scope.form.attendance !== 'yesOption';
     };
 
     $scope.$watch('form.attendance', function(newValue, oldValue){
@@ -44,20 +50,13 @@ var RegisterController = function($scope, $http, $location, globalValues, baseAp
         } else {
             pNumberAttending = form.attendingNumber;
         }
-        var body = {
-            email : globalValues.email,
-            firstName : form.firstName,
-            lastName : form.lastName,
-            areAttending : isAttending(),
-            numberAttending : pNumberAttending
-        }
-        return body;
-    };
-
-    isAttending = function() {
-         if($scope.form.attendance === 'yesOption')
-            return true;
-        else return false;    
+        return {
+            email: globalValues.email,
+            firstName: form.firstName,
+            lastName: form.lastName,
+            areAttending: $scope.form.attendance === 'yesOption',
+            numberAttending: pNumberAttending
+        };
     };
 
      $scope.submitClick = function() {
@@ -79,5 +78,5 @@ var RegisterController = function($scope, $http, $location, globalValues, baseAp
         }, function errorCallback(response){
             console.log(response.status)
         });
-    }
+    };
 };

@@ -40,6 +40,7 @@ var SearchUserController = function($scope, $http, $location, $mdDialog, globalV
                 }
             }, function errorCallback(responseEmail) {
                 if(responseEmail.status == 404) {
+                    $scope.globalValues.authenticated = true;
                     $scope.$emit('viewChange', {screenType : screenTypes.registerView})
                 }
             });
