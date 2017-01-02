@@ -4,7 +4,6 @@ var SearchUserController = function($scope, $http, $location, $mdDialog, globalV
     $scope.globalValues = globalValues;
 
     $scope.buttonClick = function() {
-        var rsvpName = $scope.globalValues.rsvpName;
         var email = $scope.globalValues.email;
 
         if(!checkIfEmailIsValid(email)){
@@ -16,21 +15,26 @@ var SearchUserController = function($scope, $http, $location, $mdDialog, globalV
             return;
         }
 
+        console.log(getAuthBody());
         $http({
-            url:baseApiUrl+"users/"+rsvpName,
-            method:"GET",
-        }).then(function successCallback(responseUserName) {
-            console.log(responseUserName.data);
+            url:baseApiUrl+"users/auth",
+            method:"POST",
+            data: getAuthBody(),
+            headers: {
+                'Content-Type':'application/json'
+            }
+        }).then(function successCallback(responseAuth) {
+            globalValues.apiToken = responseAuth.data.token;
             /** Request for email */
             var encodedURI = encodeURIComponent(email);
             $http({
                 url: baseApiUrl+"families/"+encodedURI,
                 method:"GET",
-                "headers": {
-                    "Content-Type":"application/x-www-form-urlencoded"
+                headers: {
+                    'Content-Type':'application/json',
+                    'Authorization': globalValues.apiToken
                 }
             }).then(function successCallback(responseEmail) {
-                console.log(responseEmail.data);
                 if(responseEmail.status == 200) {
                     showAlerDialog(
                         'You have already registered!',
@@ -53,7 +57,14 @@ var SearchUserController = function($scope, $http, $location, $mdDialog, globalV
                 );
             }
         });
-    }
+    };
+
+    var getAuthBody = function () {
+        return {
+            username : globalValues.apiUserName,
+            password : $scope.globalValues.rsvpName
+        }
+    };
 
     var checkIfEmailIsValid = function(email) {
         if(email === undefined) {

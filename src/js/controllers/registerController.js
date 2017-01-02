@@ -61,18 +61,18 @@ var RegisterController = function($scope, $http, $location, globalValues, baseAp
 
      $scope.submitClick = function() {
         var body = generateBody();
-        console.log(body);
         $http({
-            method:"PUT",
+            method:"POST",
             url: baseApiUrl+"families/family",
             data: body,
-            "headers":{
-                "Content-Type":"application/json"
+            headers:{
+                'Content-Type':'application/json',
+                'Authorization': globalValues.apiToken
             }
         }).then(function successCallback(response) {
-            console.log(response.status);
             if (response.status === 201) {
-                globalValues.family = body;
+                globalValues.family = response.data;
+                globalValues.apiToken = '';
                 $scope.$emit('viewChange', {screenType : screenTypes.thankYouView})
             }
         }, function errorCallback(response){

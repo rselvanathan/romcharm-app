@@ -43,4 +43,7 @@ app.service("globalValues", function() {
     globalValues.family = {};
     globalValues.email = "";
     globalValues.authenticated = false;
+
+    globalValues.apiToken = "";
+    globalValues.apiUserName="romcharm_app";
 });
