@@ -33,8 +33,12 @@ app.config(function($routeProvider, $mdThemingProvider){
 
     $mdThemingProvider.theme('indigoTheme')
         .primaryPalette('indigo')
-        .accentPalette('blue')
-        .dark() ;      
+        .accentPalette('blue');
+
+    $mdThemingProvider.theme('homeButton')
+        .primaryPalette('deep-purple')
+        .accentPalette('deep-purple')
+        .dark();
 });
 
 app.service("globalValues", function() {
