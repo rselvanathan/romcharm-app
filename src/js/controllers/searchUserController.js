@@ -3,19 +3,45 @@ var SearchUserController = function($scope, $http, $location, $mdDialog, globalV
 
     $scope.globalValues = globalValues;
 
+	var checkIfEmailIsValid = function(email) {
+		if(email === undefined || email === '') {
+			return false;
+		}
+		return true;
+	};
+
+	var showAlertDialog = function(title, textContent, arialLabel) {
+		$mdDialog.show(
+			$mdDialog
+				.alert()
+				.parent(angular.element(document.querySelector('#mainBody')))
+				.clickOutsideToClose(true)
+				.title(title)
+				.textContent(textContent)
+				.ariaLabel(arialLabel)
+				.ok('OK')
+		)
+	};
+
+	var getAuthBody = function () {
+		return {
+			username : globalValues.apiUserName,
+			password : $scope.globalValues.rsvpName
+		}
+	};
+
     $scope.buttonClick = function() {
         var email = $scope.globalValues.email;
 
-        if(!checkIfEmailIsValid(email)){
-            showAlerDialog(
-                'Email format is incorrect!',
-                'Example e-mail : name@host.com',
-                'Incorrect Email'
-            );
-            return;
-        }
+		if(!checkIfEmailIsValid(email)){
+			showAlertDialog(
+				'Email format is incorrect!',
+				'Example e-mail : name@host.com',
+				'Incorrect Email'
+			);
+			return;
+		}
 
-        console.log(getAuthBody());
         $http({
             url:baseApiUrl+"users/auth",
             method:"POST",
@@ -36,7 +62,7 @@ var SearchUserController = function($scope, $http, $location, $mdDialog, globalV
                 }
             }).then(function successCallback(responseEmail) {
                 if(responseEmail.status == 200) {
-                    showAlerDialog(
+                    showAlertDialog(
                         'You have already registered!',
                         'If you would like to make changes, feel free to contact us.',
                         'Already Registered Dialog'
@@ -50,7 +76,7 @@ var SearchUserController = function($scope, $http, $location, $mdDialog, globalV
             });
         }, function errorCallback(response) {
             if(response.status == 404) {
-                showAlerDialog(
+                showAlertDialog(
                     'RSVP Password Not Found!',
                     'Please contact us, if you believe this to be incorrect.',
                     'Not Found Dialog'
@@ -58,31 +84,4 @@ var SearchUserController = function($scope, $http, $location, $mdDialog, globalV
             }
         });
     };
-
-    var getAuthBody = function () {
-        return {
-            username : globalValues.apiUserName,
-            password : $scope.globalValues.rsvpName
-        }
-    };
-
-    var checkIfEmailIsValid = function(email) {
-        if(email === undefined) {
-            return false;
-        }
-        return true;
-    };
-
-    var showAlerDialog = function(title, textContent, arialLabel) {
-        $mdDialog.show(
-            $mdDialog
-            .alert()
-            .parent(angular.element(document.querySelector('#mainBody')))
-            .clickOutsideToClose(true)
-            .title(title)
-            .textContent(textContent)
-            .ariaLabel(arialLabel)
-            .ok('OK')
-        )
-    }
 };

@@ -33,7 +33,8 @@ app.config(function($routeProvider, $mdThemingProvider){
 
     $mdThemingProvider.theme('indigoTheme')
         .primaryPalette('indigo')
-        .accentPalette('blue');
+        .accentPalette('blue')
+        .dark();
 
     $mdThemingProvider.theme('homeButton')
         .primaryPalette('deep-purple')
