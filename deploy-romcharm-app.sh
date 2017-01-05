@@ -12,4 +12,4 @@ else
 	echo "Removing Dangling Images"
  	docker images -q --filter "dangling=true" | xargs docker rmi
 fi
-docker run -d -e VIRTUAL_HOST=www.romandcharmi.com,romandcharmi.com --name romcharm-app -it rselvanathan/romcharm-app:latest
+docker run -d -e VIRTUAL_HOST={URLS} --name romcharm-app -it rselvanathan/romcharm-app:latest
