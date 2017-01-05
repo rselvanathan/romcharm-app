@@ -30,5 +30,8 @@ after_success:
   - docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
   - docker build -t rselvanathan/romcharm-app:latest .
   - docker push rselvanathan/romcharm-app
+  # Deploy to instance
+  - openssl aes-256-cbc -K "$ENCRYPT_K" -iv "$ENCRYPT_IV" -in "./digital_ocean.enc" -out "./digital_ocean" -d
+  - chmod 600 ./digital_ocean && ssh -i ./digital_ocean $SSH_USER@$SSH_IP './deploy.sh'
 
 
