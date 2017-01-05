@@ -32,6 +32,4 @@ after_success:
   - docker push rselvanathan/romcharm-app
   # Deploy to instance
   - openssl aes-256-cbc -K "$ENCRYPT_K" -iv "$ENCRYPT_IV" -in "./digital_ocean.enc" -out "./digital_ocean" -d
-  - chmod 600 ./digital_ocean && ssh -i ./digital_ocean $SSH_USER@$SSH_IP './deploy.sh'
-
-
+  - chmod 600 ./digital_ocean && ssh -o StrictHostKeyChecking=no -i ./digital_ocean $SSH_USER@$SSH_IP './deploy-romcharm-app.sh'
