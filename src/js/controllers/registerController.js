@@ -1,4 +1,4 @@
-var RegisterController = function($scope, $http, $location, globalValues, baseApiUrl) {
+var RegisterController = function($scope, $http, $location, $mdDialog,globalValues, baseApiUrl) {
     $scope.flexSize = 50;
 
     $scope.globalValues = globalValues;
@@ -27,7 +27,7 @@ var RegisterController = function($scope, $http, $location, globalValues, baseAp
         else {
             $scope.form.attendingNumber = '';
         }
-    })
+    });
 
     $scope.isSubmitDisabled = function() {
         var form = $scope.form;
@@ -42,7 +42,20 @@ var RegisterController = function($scope, $http, $location, globalValues, baseAp
         }
     };
 
-    generateBody = function() {
+     $scope.submitClick = function() {
+         sendForm(generateBody()).then(function successCallback(response) {
+            if (response.status === 201) {
+                globalValues.family = response.data;
+                globalValues.apiToken = '';
+                $scope.$emit('viewChange', {screenType : screenTypes.thankYouView})
+            }
+        }, function errorCallback(response){
+             showErrorAlertDialog();
+             $scope.$emit('viewChange', {screenType : screenTypes.searchUserView})
+        });
+    };
+
+    var generateBody = function() {
         var form = $scope.form;
         var pNumberAttending;
         if(!form.attendingNumber) {
@@ -59,24 +72,36 @@ var RegisterController = function($scope, $http, $location, globalValues, baseAp
         };
     };
 
-     $scope.submitClick = function() {
-        var body = generateBody();
-        $http({
-            method:"POST",
-            url: baseApiUrl+"families/family",
-            data: body,
-            headers:{
-                'Content-Type':'application/json',
-                'Authorization': globalValues.apiToken
-            }
-        }).then(function successCallback(response) {
-            if (response.status === 201) {
-                globalValues.family = response.data;
-                globalValues.apiToken = '';
-                $scope.$emit('viewChange', {screenType : screenTypes.thankYouView})
-            }
-        }, function errorCallback(response){
-            console.log(response.status)
-        });
+    var sendForm = function (body) {
+       return $http({
+           method:"POST",
+           url: baseApiUrl+"families/family",
+           data: body,
+           headers:{
+               'Content-Type':'application/json',
+               'Authorization': globalValues.apiToken
+           }
+       });
     };
+
+    var showAlertDialog = function(title, textContent, arialLabel) {
+        $mdDialog.show(
+            $mdDialog
+                .alert()
+                .parent(angular.element(document.querySelector('#mainBody')))
+                .clickOutsideToClose(true)
+                .title(title)
+                .textContent(textContent)
+                .ariaLabel(arialLabel)
+                .ok('OK')
+        )
+    };
+
+    var showErrorAlertDialog = function () {
+        showAlertDialog(
+            'Oops. Something has gone wrong!',
+            'There seems to be a problem in the cloud. \n Please contact us directly while the issue is being resolved. \n Or try again later',
+            'Server Error'
+        );
+    }
 };

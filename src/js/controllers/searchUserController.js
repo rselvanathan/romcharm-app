@@ -3,33 +3,6 @@ var SearchUserController = function($scope, $http, $location, $mdDialog, globalV
 
     $scope.globalValues = globalValues;
 
-	var checkIfEmailIsValid = function(email) {
-		if(email === undefined || email === '') {
-			return false;
-		}
-		return true;
-	};
-
-	var showAlertDialog = function(title, textContent, arialLabel) {
-		$mdDialog.show(
-			$mdDialog
-				.alert()
-				.parent(angular.element(document.querySelector('#mainBody')))
-				.clickOutsideToClose(true)
-				.title(title)
-				.textContent(textContent)
-				.ariaLabel(arialLabel)
-				.ok('OK')
-		)
-	};
-
-	var getAuthBody = function () {
-		return {
-			username : globalValues.apiUserName,
-			password : $scope.globalValues.rsvpName
-		}
-	};
-
     $scope.buttonClick = function() {
         var email = $scope.globalValues.email;
 
@@ -42,25 +15,10 @@ var SearchUserController = function($scope, $http, $location, $mdDialog, globalV
 			return;
 		}
 
-        $http({
-            url:baseApiUrl+"users/auth",
-            method:"POST",
-            data: getAuthBody(),
-            headers: {
-                'Content-Type':'application/json'
-            }
-        }).then(function successCallback(responseAuth) {
+        authenticate(getAuthBody()).then(function successCallback(responseAuth) {
             globalValues.apiToken = responseAuth.data.token;
             /** Request for email */
-            var encodedURI = encodeURIComponent(email);
-            $http({
-                url: baseApiUrl+"families/"+encodedURI,
-                method:"GET",
-                headers: {
-                    'Content-Type':'application/json',
-                    'Authorization': globalValues.apiToken
-                }
-            }).then(function successCallback(responseEmail) {
+            checkEmail(email).then(function successCallback(responseEmail) {
                 if(responseEmail.status == 200) {
                     showAlertDialog(
                         'You have already registered!',
@@ -72,6 +30,8 @@ var SearchUserController = function($scope, $http, $location, $mdDialog, globalV
                 if(responseEmail.status == 404) {
                     $scope.globalValues.authenticated = true;
                     $scope.$emit('viewChange', {screenType : screenTypes.registerView})
+                } else {
+                    showErrorAlertDialog();
                 }
             });
         }, function errorCallback(response) {
@@ -81,7 +41,68 @@ var SearchUserController = function($scope, $http, $location, $mdDialog, globalV
                     'Please contact us, if you believe this to be incorrect.',
                     'Not Found Dialog'
                 );
+            } else {
+                showErrorAlertDialog();
             }
         });
     };
+
+    var authenticate = function(body) {
+        return $http({
+            url:baseApiUrl+"users/auth",
+            method:"POST",
+            data: body,
+            headers: {
+                'Content-Type':'application/json'
+            }
+        });
+    };
+
+    var checkEmail = function(email) {
+        var encodedURI = encodeURIComponent(email);
+        return $http({
+            url: baseApiUrl+"families/"+encodedURI,
+            method:"GET",
+            headers: {
+                'Content-Type':'application/json',
+                'Authorization': globalValues.apiToken
+            }
+        })
+    };
+
+
+    var checkIfEmailIsValid = function(email) {
+        if(email === undefined || email === '') {
+            return false;
+        }
+        return true;
+    };
+
+    var showAlertDialog = function(title, textContent, arialLabel) {
+        $mdDialog.show(
+            $mdDialog
+                .alert()
+                .parent(angular.element(document.querySelector('#mainBody')))
+                .clickOutsideToClose(true)
+                .title(title)
+                .textContent(textContent)
+                .ariaLabel(arialLabel)
+                .ok('OK')
+        )
+    };
+
+    var getAuthBody = function () {
+        return {
+            username : globalValues.apiUserName,
+            password : $scope.globalValues.rsvpName
+        }
+    };
+
+    var showErrorAlertDialog = function () {
+        showAlertDialog(
+            'Oops. Something has gone wrong!',
+            'There seems to be a problem in the cloud. \n Please contact us directly while the issue is being resolved. \n Or try again later',
+            'Server Error'
+        );
+    }
 };
