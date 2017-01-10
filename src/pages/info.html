@@ -1,82 +1,7 @@
-<md-content layout="column" layout-align="center" style="background:rgba(0,0,0,0.4);" class="infoFont" flex hide show-gt-sm>
+<div layout="column" flex>
+    <md-content layout="column" layout-align="center" style="background:rgba(0,0,0,0.4); position: absolute; height: 1800px; width: 100%" class="infoFont" flex>
 
-    <div layout="row" layout-align="center" flex="85" layout-xs="column">
-        <div name="ceremony" layout="column" layout-align="center" flex = "40">
-
-            <div layout="column" layout-align="center center" class="weddingFont md-display-2" flex = "20">
-                <h2>Wedding</h2>
-            </div>
-
-            <div layout="column" layout-align="center center" class="weddingFont md-display-1" flex = "10">
-                <h3>07 July 2017</h3>
-            </div>
-
-            <div layout="row" layou-align="center" flex = "70">
-
-                <div layout="column" layout-align="center center" flex>
-                    <ng-map default-style="false" center="[51.695724, -0.151181]">
-                        <marker position="[51.695724, -0.151181]"/>
-                    </ng-map>
-                </div>
-
-                <div layout="column" layout-align="center start" flex>
-                    <p>Oshwal Centre <br>
-                        Cuffley <br>
-                        Potters Bar <br>
-                        EN6 4DG
-                    </p>
-                </div>
-            </div>
-
-        </div>
-
-        <div name="reception" layout="column" layout-align="center" flex = "40">
-            <div layout="column" layout-align="center center" class="weddingFont md-display-2" flex = "20">
-                <h2>Reception</h2>
-            </div>
-
-            <div layout="column" layout-align="center center" class="weddingFont md-display-1" flex = "10">
-                <h3>08 July 2017</h3>
-            </div>
-
-            <div layout="row" layou-align="center" flex = "70">
-
-                <div layout="column" layout-align="center end" flex>
-                    <p>1A Bath Rd <br>
-                        Heathrow<br>
-                        Hounslow<br>
-                        Middlesex<br>
-                        TW6 2AA
-                    </p>
-                </div>
-
-                <div layout="column" layout-align="center center" flex>
-                    <ng-map default-style="false" center="[51.480753, -0.41767]">
-                        <marker position="[51.480753, -0.41767]"/>
-                    </ng-map>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div layout="row" layout-align="center" flex="15">
-        <p>To get in touch please send any queries forward to <b>romeshselvan@hotmail.co.uk</b> or call either Romesh or Charmikha directly.</p>
-    </div>
-
-</md-content>
-
-<!-- Small Screen -->
-<!-- Extra div to enable scrolling - otherwise angular material won't scroll for content-->
-<div layout="column" flex hide-gt-sm show-sm>
-    <md-content layout="column" flex style="background-color:#0277BD; position: absolute; height: 1000px; width: 100%" class="infoFont">
-
-            <div name="ceremony" layout="column" flex>
-
-                <div layout="column" layout-align="start center" flex="40">
-                    <ng-map default-style="false" center="[51.695724, -0.151181]">
-                        <marker position="[51.695724, -0.151181]"/>
-                    </ng-map>
-                </div>
+            <div name="ceremony" layout="column" layout-align="center" flex>
 
                 <div layout="column" layout-align="center center" class="weddingFont md-display-2" flex = "20">
                     <h2>Wedding</h2>
@@ -86,23 +11,23 @@
                     <h3>07 July 2017</h3>
                 </div>
 
-                <div layout="column" layout-align="start center" flex>
-                        <p>Oshwal Centre<br>
-                            Cuffley, Potters Bar<br>
-                            EN6 4DG
-                        </p>
+                <div layout="column" layout-align="center center" flex = "20">
+                    <p>Oshwal Centre <br>
+                       Cuffley <br>
+                       Potters Bar <br>
+                       EN6 4DG
+                    </p>
+                </div>
+
+                <div layout="column" layout-align="center center" flex class="map-container">
+                    <ng-map default-style="false" center="[51.695724, -0.151181]">
+                        <marker position="[51.695724, -0.151181]"/>
+                    </ng-map>
                 </div>
 
             </div>
 
-            <div name="reception" layout="column"  flex>
-
-                <div layout="column" layout-align="start center" flex="40">
-                    <ng-map default-style="false" center="[51.480753, -0.41767]">
-                        <marker position="[51.480753, -0.41767]"/>
-                    </ng-map>
-                </div>
-
+            <div name="reception" layout="column" layout-align="center" flex>
                 <div layout="column" layout-align="center center" class="weddingFont md-display-2" flex = "20">
                     <h2>Reception</h2>
                 </div>
@@ -111,15 +36,25 @@
                     <h3>08 July 2017</h3>
                 </div>
 
-                <div layout="column" layout-align="start center" flex>
-                        <p>1A Bath Rd <br>
-                            Heathrow<br>
-                            Hounslow<br>
-                            Middlesex<br>
-                            TW6 2AA
-                        </p>
+                <div layout="column" layout-align="center center" flex = "20">
+                    <p>1A Bath Rd <br>
+                       Heathrow<br>
+                       Hounslow<br>
+                       Middlesex<br>
+                       TW6 2AA
+                    </p>
+                </div>
+
+                <div layout="column" layout-align="center center" flex class="map-container">
+                    <ng-map default-style="false" center="[51.480753, -0.41767]">
+                        <marker position="[51.480753, -0.41767]"/>
+                    </ng-map>
                 </div>
             </div>
+
+        <div layout="row" layout-align="center" flex="15">
+            <p>To get in touch please send any queries forward to <b>romeshselvan@hotmail.co.uk</b> or call either Romesh or Charmikha directly.</p>
+        </div>
 
     </md-content>
 </div>
