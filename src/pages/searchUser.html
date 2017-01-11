@@ -8,7 +8,7 @@
             </p>
 
             <h3>
-                Please let us know if you can make it by June 30th at the latest.
+                Please let us know if you can make it by May 15th at the latest.
             </h3>
 
             <p>
@@ -23,7 +23,7 @@
             </p>
         </div>
 
-            <div layout="row" layout-align="start" flex="50">
+        <div layout="row" layout-align="start" flex="50" ng-show="!search.loading">
 
               <div layout="column" layout-align="center" flex = "50">
 
@@ -49,9 +49,10 @@
                     <md-tooltip style="color:#000000">Search</md-tooltip>
                 </md-button>
               </div>
+        </div>
 
-            </div>
-
+        <div layout="row" layout-align="center center" flex="50" ng-show="search.loading">
+            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
         </div>
 </md-content>
 
@@ -61,7 +62,11 @@
                 style="background:rgba(0,0,0,0.7); position: absolute; height: 500px; width: 100%"
                 md-theme="blueTheme" flex>
 
-        <div layout="row" layout-align="center center" flex = "50">
+        <div layout="row" layout-align="center center" flex="50" ng-show="search.loading">
+            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+        </div>
+
+        <div layout="row" layout-align="center center" flex = "50" ng-show="!search.loading">
             <div layout="column" flex = "70">
                 <div layout="column" layout-align="center" flex="35">
                     <md-input-container class="md-subhead">
@@ -86,7 +91,7 @@
 
         <div layout="column" layout-align="start start" class="md-caption" flex=>
             <h3>
-                Please let us know if you can make it by June 30th at the latest.
+                Please let us know if you can make it by May 15th at the latest.
             </h3>
 
             <p>

@@ -1,7 +1,7 @@
 <div layout="column"  flex>
   <md-content layout="column" layout-align="center" style="background:rgba(0,0,0,0.8); position: absolute; height: 500px; width: 100%" md-theme="blueTheme" flex>
 
-      <div layout="row" layout-align="center center">
+      <div layout="row" layout-align="center center" ng-show="!form.loading">
             <form name="rsvpForm">
 
               <div layout="row">
@@ -67,5 +67,10 @@
 
             </form>
       </div>
+
+    <div layout="row" layout-align="center center" flex ng-show="form.loading">
+      <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
+
   </md-content>
 </div>

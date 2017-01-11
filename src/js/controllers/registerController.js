@@ -13,7 +13,8 @@ var RegisterController = function($scope, $http, $location, $mdDialog,globalValu
 
     $scope.form = {
         attendance : 'yesOption',
-        email: $scope.globalValues.email
+        email: $scope.globalValues.email,
+        loading: false
     };
 
     $scope.isDisabled = function() {
@@ -43,13 +44,16 @@ var RegisterController = function($scope, $http, $location, $mdDialog,globalValu
     };
 
      $scope.submitClick = function() {
+         $scope.form.loading = true;
          sendForm(generateBody()).then(function successCallback(response) {
+             $scope.form.loading = false;
             if (response.status === 201) {
                 globalValues.family = response.data;
                 globalValues.apiToken = '';
                 $scope.$emit('viewChange', {screenType : screenTypes.thankYouView})
             }
         }, function errorCallback(response){
+             $scope.form.loading = false;
              showErrorAlertDialog();
              $scope.$emit('viewChange', {screenType : screenTypes.searchUserView})
         });

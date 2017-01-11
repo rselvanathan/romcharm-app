@@ -3,6 +3,10 @@ var SearchUserController = function($scope, $http, $location, $mdDialog, globalV
 
     $scope.globalValues = globalValues;
 
+    $scope.search = {
+        loading : false
+    };
+
     $scope.buttonClick = function() {
         var email = $scope.globalValues.email;
 
@@ -15,10 +19,12 @@ var SearchUserController = function($scope, $http, $location, $mdDialog, globalV
 			return;
 		}
 
+		$scope.search.loading = true;
         authenticate(getAuthBody()).then(function successCallback(responseAuth) {
             globalValues.apiToken = responseAuth.data.token;
             /** Request for email */
             checkEmail(email).then(function successCallback(responseEmail) {
+                $scope.search.loading = false;
                 if(responseEmail.status == 200) {
                     showAlertDialog(
                         'You have already registered!',
@@ -27,6 +33,7 @@ var SearchUserController = function($scope, $http, $location, $mdDialog, globalV
                     );
                 }
             }, function errorCallback(responseEmail) {
+                $scope.search.loading = false;
                 if(responseEmail.status == 404) {
                     $scope.globalValues.authenticated = true;
                     $scope.$emit('viewChange', {screenType : screenTypes.registerView})
@@ -35,6 +42,7 @@ var SearchUserController = function($scope, $http, $location, $mdDialog, globalV
                 }
             });
         }, function errorCallback(response) {
+            $scope.search.loading = false;
             if(response.status == 404) {
                 showAlertDialog(
                     'RSVP Password Not Found!',
