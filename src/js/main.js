@@ -3,7 +3,7 @@ var app = angular.module('myApp', ['myApp.config','ngRoute', 'ngMaterial', 'ngMe
 app.controller('viewController', ViewController);
 app.controller('mainMenuController', MainMenuController);
 
-app.config(function($routeProvider, $mdThemingProvider){
+app.config(function($routeProvider, $mdThemingProvider, $locationProvider){
     $routeProvider
         .when('/', {
             templateUrl : 'pages/home.html',
@@ -25,6 +25,8 @@ app.config(function($routeProvider, $mdThemingProvider){
             templateUrl: 'pages/info.html',
             controller : InfoController
         });
+
+    $locationProvider.html5Mode(true);
 
     $mdThemingProvider.theme('blueTheme')
         .primaryPalette('light-blue')
